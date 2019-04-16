@@ -1,0 +1,26 @@
+﻿<Window x:Class="Polygone.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Polygone"
+        mc:Ignorable="d"
+        Title="Polygone" Height="250" Width="650">
+    <Grid Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="-0.128"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="245,100,0,0" VerticalAlignment="Top" Width="160" Click="Button_Click" Height="50"/>
+        <TextBox x:Name="NombreCote" HorizontalAlignment="Left" Margin="50,50,0,0" TextWrapping="Wrap" Text="Nombre de coté" VerticalAlignment="Top" Width="120" Height="25"/>
+        <TextBox x:Name="AngleDroit" HorizontalAlignment="Left" Margin="200,50,0,0" TextWrapping="Wrap" Text="Angle Droit" VerticalAlignment="Top" Width="120" Height="25"/>
+        <TextBox x:Name="Taille" HorizontalAlignment="Left" Margin="350,50,0,0" TextWrapping="Wrap" Text="Nombre de coté ayant la même taille" VerticalAlignment="Top" Width="120" Height="25"/>
+        <TextBox x:Name="Parrallele" HorizontalAlignment="Left" Margin="500,50,0,0" TextWrapping="Wrap" Text="Parallele" VerticalAlignment="Top" Width="120" Height="25"/>
+        <TextBlock x:Name="Resultat" HorizontalAlignment="Left" Margin="50,175,0,0" TextWrapping="Wrap" TextAlignment="Center" Text="" VerticalAlignment="Top" Width="550" Height="25"/>
+
+    </Grid>
+</Window>
