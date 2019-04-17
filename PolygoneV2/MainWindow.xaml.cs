@@ -62,9 +62,24 @@ namespace PolygoneV2
             }
             else
             {
-                Polygone MonSuperPolygone = new Polygone(Cote, Angle, MemeTaille, NombreParallele);
+                Polygone MonSuperPolygone = Polygone.PolygoneConnue.SingleOrDefault(x =>
+                    x.NombreAngleDroit == Angle &&
+                    x.NombreCote == Cote &&
+                    x.NombreCoteMemeTaille == MemeTaille &&
+                    x.NombreCoteParallele == NombreParallele);
+
+                if (MonSuperPolygone == null)
+                {
+                    MonSuperPolygone = new Polygone(Cote, Angle, MemeTaille, NombreParallele);
+                    MonSuperPolygone.Traitement();
+                    Polygone.PolygoneConnue.Add(MonSuperPolygone);
+                }
+
+                Resultat.Background = new SolidColorBrush(MonSuperPolygone.ColorDefinie);
+                Resultat.TextAlignment = TextAlignment.Center;
+                Resultat.FontSize = 42;
+                Resultat.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 Resultat.Text = MonSuperPolygone.ToString();
-                Resultat.Foreground = new SolidColorBrush(Color.FromRgb(0, 255, 0));
             }
         }
     }

@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace PolygoneV2
 {
     class Polygone
     {
 
-        public int NombreCote { get; set; }
-        public int NombreAngleDroit { get; set; }
-        public int NombreCoteMemeTaille { get; set; }
-        public int NombreCoteParallele { get; set; }
+        public readonly static Color Green = Color.FromRgb(0, 200, 0);
+        public readonly static Color Red = Color.FromRgb(200, 33, 33);
 
+        public static List<Polygone> PolygoneConnue = new List<Polygone>();
+
+        public int NombreCote { get; private set; }
+        public int NombreAngleDroit { get; private set; }
+        public int NombreCoteMemeTaille { get; private set; }
+        public int NombreCoteParallele { get; private set; }
+
+        //Retour
+        public Color ColorDefinie { get; set; }
         public string retour { get; set; }
 
         public Polygone(int _cote, int _angle, int _taille, int _parallele)
@@ -32,34 +40,20 @@ namespace PolygoneV2
             switch (Type)
             {
                 case TypePolygone.Triangle:
-                    switch (MesRegles.TriangleType(this)){
-                        case TypeTriangle.TriangleEquilateral:
-                            retour = "Ceci est un triangle Equilateral";
-                            break;
-                        case TypeTriangle.TriangleIsocele:
-                            retour = "Ceci est un triangle Isoscele";
-                            break;
-                        case TypeTriangle.TriangleRectangle:
-                            retour = "Ceci est un triangle rectangle";
-                            break;
-                        case TypeTriangle.TriangleRectangleIsocele:
-                            retour = "Ceci est un triangle Rectangle Isocele";
-                            break;
-                        case TypeTriangle.TriangleQuelconque:
-                            retour = "Ceci est un Triangle";
-                            break;
-                        default:
-                            retour = "Ceci n'est pas un Polygone";
-                            break;
-                    }
+                    MesRegles.TriangleType(this);
                     break;
                 case TypePolygone.Quadrilatere:
+                    MesRegles.QuadrilatereType(this);
+                    break;
+                case TypePolygone.Pentagone:
+                    retour = "Ceci est un Pentagone";
+                    ColorDefinie = Green;
                     break;
                 default:
                     retour = "Ceci n'est pas un Polygone";
+                    ColorDefinie = Red;
                     break;
             }
-                
         }
 
         public override string ToString() => retour;

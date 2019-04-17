@@ -38,20 +38,30 @@ namespace PolygoneV2
         /// </summary>
         /// <param name="monPoly">Le polygone</param>
         /// <returns>Retourne le Type du Triangle</returns>
-        public TypeTriangle TriangleType(Polygone monPoly)
+        public void TriangleType(Polygone monPoly)
         {
+
             if (monPoly.NombreCoteParallele > 0 || monPoly.NombreAngleDroit > 1 || monPoly.NombreCoteMemeTaille > 3)
-                return TypeTriangle.NonPolygone;
+            {
+                monPoly.retour = "Ceci n'est pas un Polygone";
+                monPoly.ColorDefinie = Polygone.Red;
+            }
             else if (monPoly.NombreAngleDroit == 0)
             {
                 switch (monPoly.NombreCoteMemeTaille)
                 {
                     case 2:
-                        return TypeTriangle.TriangleIsocele;
+                        monPoly.retour = "Ceci est un triangle Isoscele";
+                        monPoly.ColorDefinie = Polygone.Green;
+                        break;
                     case 3:
-                        return TypeTriangle.TriangleEquilateral;
+                        monPoly.retour = "Ceci est un triangle Equilateral";
+                        monPoly.ColorDefinie = Polygone.Green;
+                        break;
                     default:
-                        return TypeTriangle.TriangleQuelconque;
+                        monPoly.retour = "Ceci est un Triangle";
+                        monPoly.ColorDefinie = Polygone.Green;
+                        break;
                 }
             }
             else
@@ -59,15 +69,20 @@ namespace PolygoneV2
                 switch (monPoly.NombreCoteMemeTaille)
                 {
                     case 2:
-                        return TypeTriangle.TriangleRectangleIsocele;
+                        monPoly.retour = "Ceci est un triangle isocèle";
+                        monPoly.ColorDefinie = Polygone.Green;
+                        break;
                     case 3:
-                        return TypeTriangle.NonPolygone;
+                        monPoly.retour = "Ceci n'est pas un Polygone";
+                        monPoly.ColorDefinie = Polygone.Red;
+                        break;
                     default:
-                        return TypeTriangle.TriangleRectangle;
+                        monPoly.retour = "Ceci est un triangle Rectangle";
+                        monPoly.ColorDefinie = Polygone.Green;
+                        break;
                 }
-                    
+
             }
-            return TypeTriangle.NonPolygone;
         }
 
         /// <summary>
@@ -75,12 +90,80 @@ namespace PolygoneV2
         /// </summary>
         /// <param name="monPoly">Le polygone</param>
         /// <returns>Retourne le Type du Quadrilatere</returns>
-        public TypeQuadrilatere QuadrilatereType(Polygone monPoly)
+        public void QuadrilatereType(Polygone monPoly)
         {
-            if (monPoly.NombreCoteParallele > 4 || monPoly.NombreAngleDroit > 4 || monPoly.NombreCoteMemeTaille > 4)
-                return TypeQuadrilatere.NonPolygone;
+            if (monPoly.NombreCoteParallele > 4 || monPoly.NombreAngleDroit > 4 || monPoly.NombreCoteMemeTaille > 4 || monPoly.NombreCoteParallele > 4)
+            {
+                monPoly.retour = "Ceci n'est pas un Polygone";
+                monPoly.ColorDefinie = Polygone.Red;
+            }
+            switch (monPoly.NombreCoteParallele)
+            {
+                case 1:
+                case 3:
+                default:
+                    monPoly.retour = "Ceci n'est pas un Polygone";
+                    monPoly.ColorDefinie = Polygone.Red;
+                    break;
+                case 4:
+                    switch (monPoly.NombreCoteMemeTaille)
+                    {
+                        case 0:
+                        case 1:
+                        case 3:
+                        default:
+                            monPoly.retour = "Ceci n'est pas un Polygone";
+                            monPoly.ColorDefinie = Polygone.Red;
+                            break;
+                        case 2:
+                            if (monPoly.NombreAngleDroit == 4)
+                            {
+                                monPoly.retour = "Ceci est un rectangle";
+                                monPoly.ColorDefinie = Polygone.Green;
+                            } else if (monPoly.NombreAngleDroit == 0)
+                            {
+                                monPoly.retour = "Ceci est un parallélogramme quelconque";
+                                monPoly.ColorDefinie = Polygone.Green;
+                            } else
+                            {
+                                monPoly.retour = "Ceci n'est pas un Polygone";
+                                monPoly.ColorDefinie = Polygone.Red;
+                            }
+                            break;
+                        case 4:
+                            if(monPoly.NombreAngleDroit == 0)
+                            {
+                                monPoly.retour = "Ceci est un losange";
+                                monPoly.ColorDefinie = Polygone.Green;
+                            } else if (monPoly.NombreAngleDroit == 4) {
+                                monPoly.retour = "Ceci est un carré";
+                                monPoly.ColorDefinie = Polygone.Green;
+                            } else
+                            {
+                                monPoly.retour = "Ceci n'est pas un Polygone";
+                                monPoly.ColorDefinie = Polygone.Red;
+                            }
+                            break;
+                    }
+                    break;
+                case 2:
+                    switch (monPoly.NombreCoteMemeTaille)
+                    {
+                        case 0:
+                            if(monPoly.NombreAngleDroit == 2)
+                            {
+                                monPoly.retour = "Ceci est un trapèze rectangle";
+                                monPoly.ColorDefinie = Polygone.Green;
+                            } else
+                            {
+                                monPoly.retour = "Ceci n'est pas un Polygone";
+                                monPoly.ColorDefinie = Polygone.Red;
+                            }
+                    }
+                    break;
 
-            return TypeQuadrilatere.Carre;
+            }
+
         }
     }
 

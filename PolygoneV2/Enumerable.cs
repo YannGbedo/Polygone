@@ -16,15 +16,6 @@ namespace PolygoneV2
 
     }
 
-    enum TypeTriangle
-    {
-        TriangleQuelconque,
-        TriangleIsocele,
-        TriangleRectangle,
-        TriangleRectangleIsocele,
-        TriangleEquilateral,
-        NonPolygone
-    }
 
     enum TypeQuadrilatere
     {
