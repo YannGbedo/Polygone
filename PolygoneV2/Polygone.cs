@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,15 +16,17 @@ namespace PolygoneV2
 
         public static List<Polygone> PolygoneConnue = new List<Polygone>();
 
-        public int NombreCote { get; private set; }
-        public int NombreAngleDroit { get; private set; }
-        public int NombreCoteMemeTaille { get; private set; }
-        public int NombreCoteParallele { get; private set; }
+        public int NombreCote { get;  set; }
+        public int NombreAngleDroit { get; set; }
+        public int NombreCoteMemeTaille { get;  set; }
+        public int NombreCoteParallele { get;  set; }
 
         //Retour
         public Color ColorDefinie { get; set; }
         public string retour { get; set; }
 
+        [JsonConstructor]
+        private Polygone() { }
         public Polygone(int _cote, int _angle, int _taille, int _parallele)
         {
             NombreCote = _cote;

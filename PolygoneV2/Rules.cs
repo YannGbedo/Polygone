@@ -154,11 +154,83 @@ namespace PolygoneV2
                             {
                                 monPoly.retour = "Ceci est un trapèze rectangle";
                                 monPoly.ColorDefinie = Polygone.Green;
+                            } else if( monPoly.NombreAngleDroit == 0)
+                            {
+                                monPoly.retour = "Ceci est un trapèze quelconque";
+                                monPoly.ColorDefinie = Polygone.Green;
                             } else
                             {
                                 monPoly.retour = "Ceci n'est pas un Polygone";
                                 monPoly.ColorDefinie = Polygone.Red;
                             }
+                            break;
+                        case 2:
+                            if(monPoly.NombreAngleDroit == 0)
+                            {
+                                monPoly.retour = "Ceci est un trapèze isocèle";
+                                monPoly.ColorDefinie = Polygone.Green;
+                            } else
+                            {
+                                monPoly.retour = "Ceci n'est pas un Polygone";
+                                monPoly.ColorDefinie = Polygone.Red;
+                            }
+                            break;
+                        case 1:
+                        case 3:
+                        case 4:
+                        default:
+                            monPoly.retour = "Ceci n'est pas un Polygone";
+                            monPoly.ColorDefinie = Polygone.Red;
+                            break;
+
+
+
+                    }
+                    break;
+                case 0:
+                    switch (monPoly.NombreCoteMemeTaille)
+                    {
+                        case 1:
+                        case 4:
+                        default:
+                            monPoly.retour = "Ceci n'est pas un Polygone";
+                            monPoly.ColorDefinie = Polygone.Red;
+                            break;
+                        case 0:
+                            if(monPoly.NombreAngleDroit > 2)
+                            {
+                                monPoly.retour = "Ceci n'est pas un Polygone";
+                                monPoly.ColorDefinie = Polygone.Red;
+                            } else
+                            {
+                                monPoly.retour = "Ceci est un quadrilatère quelconque";
+                                monPoly.ColorDefinie = Polygone.Green;
+                            }
+                            break;
+                        case 2:
+                            if (monPoly.NombreAngleDroit > 1)
+                            {
+                                monPoly.retour = "Ceci n'est pas un Polygone";
+                                monPoly.ColorDefinie = Polygone.Red;
+                            }
+                            else
+                            {
+                                monPoly.retour = "Ceci est un quadrilatère quelconque";
+                                monPoly.ColorDefinie = Polygone.Green;
+                            }
+                            break;
+                        case 3:
+                            if (monPoly.NombreAngleDroit > 1)
+                            {
+                                monPoly.retour = "Ceci n'est pas un Polygone";
+                                monPoly.ColorDefinie = Polygone.Red;
+                            }
+                            else
+                            {
+                                monPoly.retour = "Ceci est un quadrilatère quelconque";
+                                monPoly.ColorDefinie = Polygone.Green;
+                            }
+                            break;
                     }
                     break;
 

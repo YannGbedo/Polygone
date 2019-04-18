@@ -23,6 +23,7 @@ namespace PolygoneV2
         public MainWindow()
         {
             InitializeComponent();
+            Polygone.PolygoneConnue = JsonFile.RecupereList();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -62,17 +63,24 @@ namespace PolygoneV2
             }
             else
             {
+                MemeTaille = MemeTaille == 1 ? 0 : MemeTaille;
+                NombreParallele = NombreParallele == 1 ? 0 : NombreParallele;
+
+                //Vérification si on connait pas déjà
                 Polygone MonSuperPolygone = Polygone.PolygoneConnue.SingleOrDefault(x =>
                     x.NombreAngleDroit == Angle &&
                     x.NombreCote == Cote &&
                     x.NombreCoteMemeTaille == MemeTaille &&
                     x.NombreCoteParallele == NombreParallele);
 
+
+                //Sinon on le traite
                 if (MonSuperPolygone == null)
                 {
                     MonSuperPolygone = new Polygone(Cote, Angle, MemeTaille, NombreParallele);
                     MonSuperPolygone.Traitement();
                     Polygone.PolygoneConnue.Add(MonSuperPolygone);
+                    JsonFile.EcrisFile();
                 }
 
                 Resultat.Background = new SolidColorBrush(MonSuperPolygone.ColorDefinie);
