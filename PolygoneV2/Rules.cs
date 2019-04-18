@@ -237,6 +237,50 @@ namespace PolygoneV2
             }
 
         }
+
+
+        public void PentagoneType(Polygone monPoly)
+        {
+            bool isPentagone = false;
+            if (monPoly.NombreCoteParallele > 5 || monPoly.NombreAngleDroit > 5 || monPoly.NombreCoteMemeTaille > 5 || monPoly.NombreCoteParallele > 5)
+            {
+                isPentagone = false;
+            }
+            else
+            {
+                switch (monPoly.NombreCoteMemeTaille){
+                    case 1:
+                    case 2:
+                    case 0:
+                        if (monPoly.NombreAngleDroit < 4 && monPoly.NombreCoteParallele < 4)
+                            isPentagone = true;
+                        break;
+                    case 3:
+                        if (monPoly.NombreCoteParallele < 3 && monPoly.NombreAngleDroit < 3)
+                            isPentagone = true;
+                        break;
+                    case 4:
+                    case 5:
+                        if (monPoly.NombreCoteParallele == 0 && monPoly.NombreAngleDroit == 0)
+                            isPentagone = true;
+                        break;
+                    
+                    
+                }
+                
+            }
+
+            if (isPentagone)
+            {
+                monPoly.retour = "Ceci est un pentagone";
+                monPoly.ColorDefinie = Polygone.Green;
+            }
+            else
+            {
+                monPoly.retour = "Ceci n'est pas un polygone";
+                monPoly.ColorDefinie = Polygone.Red;
+            }
+        }
     }
 
 }

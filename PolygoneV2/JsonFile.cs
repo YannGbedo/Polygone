@@ -21,5 +21,10 @@ namespace PolygoneV2
             string JsonContenu = JsonConvert.SerializeObject(Polygone.PolygoneConnue);
             File.WriteAllText(JsonUri, JsonContenu);
         }
+        public static void ResetFile()
+        {
+            Polygone.PolygoneConnue = new List<Polygone>();
+            File.WriteAllText(JsonUri, "");
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace PolygoneV2
 
         public readonly static Color Green = Color.FromRgb(0, 200, 0);
         public readonly static Color Red = Color.FromRgb(200, 33, 33);
+        public readonly static Color Orange = Color.FromRgb(255,165,0);
 
         public static List<Polygone> PolygoneConnue = new List<Polygone>();
 
@@ -49,8 +50,11 @@ namespace PolygoneV2
                     MesRegles.QuadrilatereType(this);
                     break;
                 case TypePolygone.Pentagone:
-                    retour = "Ceci est un Pentagone";
-                    ColorDefinie = Green;
+                    MesRegles.PentagoneType(this);
+                    break;
+                case TypePolygone.Autre:
+                    retour = "Je ne connais pas ce Polygone";
+                    ColorDefinie = Orange;
                     break;
                 default:
                     retour = "Ceci n'est pas un Polygone";

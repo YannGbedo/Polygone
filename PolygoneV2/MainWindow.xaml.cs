@@ -90,5 +90,15 @@ namespace PolygoneV2
                 Resultat.Text = MonSuperPolygone.ToString();
             }
         }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            JsonFile.ResetFile();
+            Resultat.Background = new SolidColorBrush(Color.FromRgb(255,255,255));
+            Resultat.TextAlignment = TextAlignment.Center;
+            Resultat.FontSize = 30;
+            Resultat.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            Resultat.Text = "La base de fait a été reset";
+        }
     }
 }
